@@ -264,6 +264,9 @@ def prepare_backend(backend: str):
             import browsergym.timewarp
         case "knows":
             import browsergym.knows
+
+            # pre-download the gold evaluation data (~210 MB, cached per package version)
+            browsergym.knows.ensure_gold_data()
         case _:
             raise NotImplementedError(f"Unknown benchmark backend {repr(backend)}")
 
